@@ -1,89 +1,35 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-
-/*let name = 'Iftekhar1'
-let obj = {
-    fnane:'iftekharul',
-    lname: 'islam'
-
-}*/
-
-/*function Cartoon(props) {
-    return <h1>Hello , {props.name} , {props.show}</h1>
-}
-
-
-function Show() {
-   return <div> <Cartoon name="pickachu" show="pokemon"/>
-    <Cartoon name="jasemin" show="aladin"/>
-         </div>
-}*/
-
-/*
- class Cartoon extends React.Component{
-
- render(){
- return <h1>Hi , {this.props.name} </h1>
- }
- }
- */
-
-/*function  Clock() {
-    return <h1> This time this :- {new Date().toLocaleTimeString()}</h1>
-}*/
-
-class Clock extends React.Component{
+class Inc extends React.Component{
 
     constructor(props){
-
         super(props);
-        this.state={
+        this.state = {counter : 0};
+        //this.increment = this.increment.bind(this);
 
-            date : new Date()
-        }
     }
 
-    componentDidMount(){
-        this.timer = setInterval(()=>this.start(),1000);
-    }
-
-    componentWillUnmomunt(){
-        clearInterval(this.timer);
-    }
-
-    start(){
+    /*increment(e){
+        e.preventDefault();
         this.setState({
+            counter: this.state.counter+1
+        });
+    }*/
 
-            date: new Date()
+    increment=(e)=>{
+        e.preventDefault();
+        this.setState({
+            counter: this.state.counter+1
         });
     }
     render(){
-        return <h1> This time this :- {this.state.date.toLocaleTimeString()}</h1>
+        //return <a href="http://google.com" onClick={(e)=>this.increment(e)}>Value is {this.state.counter}</a>
+        return <a href="http://google.com" onClick={(e)=>this.increment(e)}>Value is {this.state.counter}</a>
     }
 }
 
-
-/*
-function time() {
-    ReactDOM.render(
-        //<Cartoon name="pickachu"/>,
-
-        // <Show/>,
-
-        <Clock/>,
-        document.getElementById('root')
-    );
-}
-setInterval(time(),1000);
-*/
-
 ReactDOM.render(
-    //<Cartoon name="pickachu"/>,
-
-    // <Show/>,
-
-    <Clock/>,
+    <Inc/>,
     document.getElementById('root')
 );
-
