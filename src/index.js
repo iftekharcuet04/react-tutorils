@@ -8,15 +8,31 @@ let obj = {
     lname: 'islam'
 
 }*/
-//const element = <h1>hi {name} </h1>
-let clock = function () {
-    return <h1>{ new Date().toLocaleTimeString()}</h1>
+
+function Cartoon(props) {
+    return <h1>Hello , {props.name} , {props.show}</h1>
 }
+
+
+function Show() {
+   return <div> <Cartoon name="pickachu" show="pokemon"/>
+    <Cartoon name="jasemin" show="aladin"/>
+         </div>
+}
+/*
+class Cartoon extends React.Component{
+
+    render(){
+        return <h1>Hi , {this.props.name} </h1>
+    }
+}
+*/
 
 setInterval(function () {
     ReactDOM.render(
-        //<h1>hi {obj.fnane} {obj.lname}</h1>
-        clock(),
+        //<Cartoon name="pickachu"/>,
+
+        <Show/>,
         document.getElementById('root')
     );
 },1000)
