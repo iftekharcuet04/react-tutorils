@@ -1,39 +1,58 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-class FormTest extends React.Component{
-    constructor(props){
+class Calculator extends  React.Component{
+    constructor(props) {
         super(props);
-        this.state = {value: "tom"}
+        this.state = {
+            scale: 'c', temp: '0'
+        }
     }
 
-    handleSubmit= (e)=>{
-        console.log(this.state.value);
-        e.preventDefault();
-    }
+    handleCelciusChange = (e) =>{
 
-    handleChange = (e)=>{
         this.setState({
-            value: e.target.value
-        });
+            scale:'c',temp:e.target.value
+        })
+
     }
-    render(){
-        return(
-            <form onSubmit={this.handleSubmit}>
-                    {/*<input type="text"  value={this.state.value} onChange={this.handleChange}/>*/}
-                    {/*<textarea value={this.state.value} onChange={this.handleChange}></textarea>*/}
-                    <select value={this.state.value} onChange={this.handleChange}>
-                        <option value="pickachu">Pickachu</option>
-                        <option value="tom">Tom</option>
-                    </select>
-                    <input type="submit" value="Go Ahead"/>
-            </form>
 
-        )
-            }
+    handleFarenhiteChange = (e) =>{
+
+        this.setState({
+            scale:'f',temp:e.target.value
+        })
+
+    }
+        render(){
+            const temp=this.state.temp
+            const scale=this.state.scale
+            const celcius= scale ==='f' ? (temp-32)*5/9 : temp
+            const farenhite=scale ==='c' ? (temp*9)/5 +32 : temp
+            return(
+
+                <div>
+                    <fieldset>
+                    <legend>
+                        Sale Celcius
+                    </legend>
+
+                    <input value={celcius} onChange={this.handleCelciusChange}/>
+                </fieldset>
+
+                <fieldset>
+                    <legend>
+                        Sale Farenhite
+                    </legend>
+
+                    <input value={farenhite} onChange={this.handleFarenhiteChange}/>
+                </fieldset>
+                </div>
+            );
+        }
+
 }
-
 ReactDOM.render(
-    <FormTest/>,
+    <Calculator />,
     document.getElementById('root')
 );
